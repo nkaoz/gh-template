@@ -57,71 +57,73 @@
     </template>
 
     <template id="template-1">
-      <div
-        class="o-3d-steps-slider"
-        data-theme="portrait"
-        flex="fd:co jc:ce"
-        data-lazy-component="3d-steps-slider:css-js"
-      >
-        <div cols="1/1" flex="fd:cor ai:ce">
-          <div class="m-steps-slider m-steps-slider--landscape" cols="12/13 21/23@sm 12/15@md" mart="44 40@sm 52@md">
-            {{#each items}}
-            <div class="a-step-slide" data-ref="{{orden}}">
-              <img
-                class="a-step-slide__image"
-                srcset="{{image}}, {{image}} 2x"
-                src="{{image}}"
-                alt="{{title}}"
-                cols="1/1"
-              />
-            </div>
-            {{/each}}
-          </div>
-
-          <div flex="fd:co ai:ce jc:ce@sm jc:fs@md" cols="1/1 19/23@sm 11/15@md">
-            <div class="m-steps-circles-buttons" flex="ai:ce jc:sb" mxw="188 277@sm" cols="1/1 11/15@sm 7/9@md">
+      <div class="a-html-content__wrapper">
+        <div
+          class="o-3d-steps-slider"
+          data-theme="portrait"
+          flex="fd:co jc:ce"
+          data-lazy-component="3d-steps-slider:css-js"
+        >
+          <div cols="1/1" flex="fd:cor ai:ce">
+            <div class="m-steps-slider m-steps-slider--landscape" cols="12/13 21/23@sm 12/15@md" mart="44 40@sm 52@md">
               {{#each items}}
-              <a class="a-step-circle-button is-active" flex="ai:ce jc:ce" data-step="{{orden}}">
-                <div class="a-step-circle-button__element" flex="ai:ce jc:ce">
-                  <span class="a-step-circle-button__label">{{orden}}</span>
-                </div>
-              </a>
-              {{/each}}
-            </div>
-            <div
-              class="m-htmls-contents m-htmls-contents--opacity-effect u-text-center u-text-center-xs"
-              data-effect="opacity"
-              cols="1/1"
-              mart="20 14@sm 20@md"
-            >
-              {{#each items}}
-              <div
-                class="a-html-content is-active a-html-content--ani-display-none"
-                id="a0{{orden}}"
-                data-href="{{orden}}"
-                data-type="ani-display-none"
-                pad="0-1/15 0-0@sm"
-              >
-                <div class="a-html-content__wrapper">
-                  <h3
-                    class="g-sub-title g-sub-title-m u-allcaps u-text-light u-cutt-text u-cutt-text-1"
-                    title="Paso {{orden}}"
-                  >
-                    Paso {{orden}}
-                  </h3>
-                  <h4
-                    class="g-sub-title g-sub-title-m u-text-medium u-cutt-text u-cutt-text-1"
-                    mart="12"
-                    title="{{title}}"
-                  >
-                    {{title}}
-                  </h4>
-                  <p class="g-paragraph g-paragraph-m u-cutt-text u-cutt-text-4" mart="12" title="{{description}}">
-                    {{description}}
-                  </p>
-                </div>
+              <div class="a-step-slide {{#if active}}is-active{{/if}}" data-ref="{{orden}}">
+                <img
+                  class="a-step-slide__image"
+                  srcset="{{image}}, {{image}} 2x"
+                  src="{{image}}"
+                  alt="{{title}}"
+                  cols="1/1"
+                />
               </div>
               {{/each}}
+            </div>
+
+            <div flex="fd:co ai:ce jc:ce@sm jc:fs@md" cols="1/1 19/23@sm 11/15@md">
+              <div class="m-steps-circles-buttons" flex="ai:ce jc:sb" mxw="188 277@sm" cols="1/1 11/15@sm 7/9@md">
+                {{#each items}}
+                <a class="a-step-circle-button {{#if active}}is-active{{/if}}" flex="ai:ce jc:ce" data-step="{{orden}}">
+                  <div class="a-step-circle-button__element" flex="ai:ce jc:ce">
+                    <span class="a-step-circle-button__label">{{orden}}</span>
+                  </div>
+                </a>
+                {{/each}}
+              </div>
+              <div
+                class="m-htmls-contents m-htmls-contents--opacity-effect u-text-center u-text-center-xs"
+                data-effect="opacity"
+                cols="1/1"
+                mart="20 14@sm 20@md"
+              >
+                {{#each items}}
+                <div
+                  class="a-html-content {{#if active}}is-active{{/if}} a-html-content--ani-display-none"
+                  id="a0{{orden}}"
+                  data-href="{{orden}}"
+                  data-type="ani-display-none"
+                  pad="0-1/15 0-0@sm"
+                >
+                  <div class="a-html-content__wrapper">
+                    <h3
+                      class="g-sub-title g-sub-title-m u-allcaps u-text-light u-cutt-text u-cutt-text-1"
+                      title="Paso {{orden}}"
+                    >
+                      Paso {{orden}}
+                    </h3>
+                    <h4
+                      class="g-sub-title g-sub-title-m u-text-medium u-cutt-text u-cutt-text-1"
+                      mart="12"
+                      title="{{title}}"
+                    >
+                      {{title}}
+                    </h4>
+                    <p class="g-paragraph g-paragraph-m u-cutt-text u-cutt-text-4" mart="12" title="{{description}}">
+                      {{description}}
+                    </p>
+                  </div>
+                </div>
+                {{/each}}
+              </div>
             </div>
           </div>
         </div>

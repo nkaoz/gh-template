@@ -23,6 +23,7 @@
       itemData.image = d.getElementById('image-' + index).value;
       itemData.orden = index;
       itemData.total = countItems;
+      itemData.active = index === 1 ? true : false;
 
       items.push(itemData);
     }
