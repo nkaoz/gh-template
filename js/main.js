@@ -21,6 +21,7 @@
       itemData.title = d.getElementById('title-' + index).value;
       itemData.description = d.getElementById('description-' + index).value;
       itemData.image = d.getElementById('image-' + index).value;
+      itemData.image2x = d.getElementById('image2x-' + index).value;
       itemData.orden = index;
       itemData.total = countItems;
       itemData.active = index === 1 ? true : false;

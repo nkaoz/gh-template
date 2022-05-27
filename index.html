@@ -49,11 +49,15 @@
         <input type="text" class="form-control" id="image-{{index}}" placeholder="" />
       </div>
       <div lass="col-12">
-        <label for="title-{{index}}" class="form-label">Titulo</label>
+        <label for="image2x-{{index}}" class="form-label">Imagen2x</label>
+        <input type="text" class="form-control" id="image2x-{{index}}" placeholder="" />
+      </div>
+      <div lass="col-12">
+        <label for="title-{{index}}" class="form-label">Título</label>
         <input type="text" class="form-control" id="title-{{index}}" placeholder="" />
       </div>
       <div lass="col-12">
-        <label for="description-{{index}}" class="form-label">description</label>
+        <label for="description-{{index}}" class="form-label">Descriptión</label>
         <input type="text" class="form-control" id="description-{{index}}" placeholder="" />
       </div>
     </template>
@@ -72,7 +76,7 @@
               <div class="a-step-slide {{#if active}}is-active{{/if}}" data-ref="{{orden}}">
                 <img
                   class="a-step-slide__image"
-                  srcset="{{image}}, {{image}} 2x"
+                  srcset="{{image}}, {{#if image2x}}{{image2x}}{{else}}{{image}}{{/if}} 2x"
                   src="{{image}}"
                   alt="{{title}}"
                   cols="1/1"
