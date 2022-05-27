@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Generator Step to Step | by nkaoz</title>
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container" style="margin: 80px 0">
+      <form class="row g-3">
+        <div class="col-12">
+          <label class="visually-hidden" for="selectTemplate">Preference</label>
+          <select class="form-select" id="selectTemplate">
+            <option value="1" selected>Plantilla 1</option>
+            <option value="2">Plantilla 2</option>
+          </select>
+        </div>
+        <div lass="col-12">
+          <img id="imgTemplate" src="images/image-1.png" alt="" style="max-width: 500px" />
+        </div>
+        <div class="col-12">
+          <button id="add" type="button" class="btn btn-primary">add</button>
+          <button id="generate" type="button" disabled class="btn btn-secondary">generate</button>
+        </div>
+        <div id="wrapper"></div>
+        <div id="wrapperRenderHTML" lass="col-12" style="display: none">
+          <label for="renderHTML" class="form-label">Render HTML</label>
+          <textarea class="form-control" id="renderHTML" rows="3"></textarea>
+        </div>
+      </form>
+    </div>
+
+    <template id="itemStep">
+      <div class="col-12">
+        <h2>step {{index}}</h2>
+      </div>
+      <div lass="col-12">
+        <label for="image-{{index}}" class="form-label">Imagen</label>
+        <input type="text" class="form-control" id="image-{{index}}" placeholder="" />
+      </div>
+      <div lass="col-12">
+        <label for="title-{{index}}" class="form-label">Titulo</label>
+        <input type="text" class="form-control" id="title-{{index}}" placeholder="" />
+      </div>
+      <div lass="col-12">
+        <label for="description-{{index}}" class="form-label">description</label>
+        <input type="text" class="form-control" id="description-{{index}}" placeholder="" />
+      </div>
+    </template>
+
+    <template id="template-1">
+      <div
+        class="o-3d-steps-slider"
+        data-theme="portrait"
+        flex="fd:co jc:ce"
+        data-lazy-component="3d-steps-slider:css-js"
+      >
+        <div cols="1/1" flex="fd:cor ai:ce">
+          <div class="m-steps-slider m-steps-slider--landscape" cols="12/13 21/23@sm 12/15@md" mart="44 40@sm 52@md">
+            {{#each items}}
+            <div class="a-step-slide" data-ref="{{orden}}">
+              <img
+                class="a-step-slide__image"
+                srcset="{{image}}, {{image}} 2x"
+                src="{{image}}"
+                alt="{{title}}"
+                cols="1/1"
+              />
+            </div>
+            {{/each}}
+          </div>
+
+          <div flex="fd:co ai:ce jc:ce@sm jc:fs@md" cols="1/1 19/23@sm 11/15@md">
+            <div class="m-steps-circles-buttons" flex="ai:ce jc:sb" mxw="188 277@sm" cols="1/1 11/15@sm 7/9@md">
+              {{#each items}}
+              <a class="a-step-circle-button is-active" flex="ai:ce jc:ce" data-step="{{orden}}">
+                <div class="a-step-circle-button__element" flex="ai:ce jc:ce">
+                  <span class="a-step-circle-button__label">{{orden}}</span>
+                </div>
+              </a>
+              {{/each}}
+            </div>
+            <div
+              class="m-htmls-contents m-htmls-contents--opacity-effect u-text-center u-text-center-xs"
+              data-effect="opacity"
+              cols="1/1"
+              mart="20 14@sm 20@md"
+            >
+              {{#each items}}
+              <div
+                class="a-html-content is-active a-html-content--ani-display-none"
+                id="a0{{orden}}"
+                data-href="{{orden}}"
+                data-type="ani-display-none"
+                pad="0-1/15 0-0@sm"
+              >
+                <div class="a-html-content__wrapper">
+                  <h3
+                    class="g-sub-title g-sub-title-m u-allcaps u-text-light u-cutt-text u-cutt-text-1"
+                    title="Paso {{orden}}"
+                  >
+                    Paso {{orden}}
+                  </h3>
+                  <h4
+                    class="g-sub-title g-sub-title-m u-text-medium u-cutt-text u-cutt-text-1"
+                    mart="12"
+                    title="{{title}}"
+                  >
+                    {{title}}
+                  </h4>
+                  <p class="g-paragraph g-paragraph-m u-cutt-text u-cutt-text-4" mart="12" title="{{description}}">
+                    {{description}}
+                  </p>
+                </div>
+              </div>
+              {{/each}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </template>
+    <template id="template-2">
+      <div
+        class="o-steps-slider u-ov-h"
+        cols="1/1"
+        mart="24 32@sm"
+        data-mbox="web-halcon-product-descrip-f9-3"
+        data-lazy-component="steps-slider:css-js"
+      >
+        <div class="o-steps-slider__content" cols="1/1">
+          <div class="o-steps-slider__content--slider" flex="jc:ce@sm fd:r@md">
+            {{#each items}}
+            <div class="m-step-slider">
+              <div class="m-step-slider__container" flex="ai:ce fd:r">
+                <div class="m-step-slider__img" cols="5.5/13 13.5/29@sm 8/15@md" marr="1.5/29@sm 1/15@md">
+                  <div class="m-step-slider__img--content">
+                    <img class="lazyload" src="{{image}}" srcset="{{image}}, {{image}} 2x" alt="{{title}}" />
+                  </div>
+                </div>
+                <div class="m-step-slider__list" cols="6/13 10/29@sm 5/15@md" marl="1/13 0/31@sm">
+                  <div class="m-step-slider__item">
+                    <div class="m-step-slider__title">
+                      <h2 class="allcaps u-color-gray-3" marb="6 4@sm">Paso {{orden}} de {{total}}</h2>
+                    </div>
+                    <div class="m-step-slider__text">
+                      <p class="g-sub-title g-sub-title-m g-sub-title-m--bold">{{title}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {{/each}}
+          </div>
+        </div>
+      </div>
+    </template>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
