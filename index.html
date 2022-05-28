@@ -16,8 +16,16 @@
     />
   </head>
   <body>
-    <div class="container" style="margin: 80px 0">
-      <form class="row g-3">
+    <div class="container">
+      <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+          <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+          <span class="fs-4">Generator</span>
+        </a>
+      </header>
+    </div>
+    <div class="container" style="margin: 80px auto">
+      <form class="row">
         <div class="col-12">
           <label class="visually-hidden" for="selectTemplate">Preference</label>
           <select class="form-select" id="selectTemplate">
@@ -61,7 +69,6 @@
         <input type="text" class="form-control" id="description-{{index}}" placeholder="" />
       </div>
     </template>
-
     <template id="template-1">
       <div class="a-html-content__wrapper">
         <div
@@ -171,6 +178,6 @@
       </div>
     </template>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
-    <script src="js/main.js?v=1653633383575"></script>
+    <script src="js/main.js?v=1653670490826"></script>
   </body>
 </html>
