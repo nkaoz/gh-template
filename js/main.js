@@ -37,6 +37,24 @@
     return template({ items: items });
   }
 
+  function encodeHTML(str) {
+    const code = {
+      ' ': '&nbsp;',
+      '¢': '&cent;',
+      '£': '&pound;',
+      '¥': '&yen;',
+      '€': '&euro;',
+      '©': '&copy;',
+      '®': '&reg;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      '&': '&amp;',
+      "'": '&apos;',
+    };
+    return str.replace(/[\u00A0-\u9999<>\&''""]/gm, (i) => code[i]);
+  }
+
   const btn = d.getElementById('add');
   const btnGenerate = d.getElementById('generate');
   const wrapperRenderHTML = d.getElementById('wrapperRenderHTML');
@@ -64,7 +82,21 @@
     var items = list();
 
     var result = generateTemplate(items, selectTemplate);
-    renderHTML.innerHTML = result;
+
+    var NEW_LINE_EXP = /\n(?!$)/g;
+    var lineNumbersWrapper;
+
+    Prism.hooks.add('after-tokenize', function (env) {
+      var match = env.code.match(NEW_LINE_EXP);
+      var linesNum = match ? match.length + 1 : 1;
+      var lines = new Array(linesNum + 1).join('<span></span>');
+
+      lineNumbersWrapper = `<span aria-hidden="true" class="line-numbers-rows">${lines}</span>`;
+    });
+
+    const formated = Prism.highlight(result.trim(), Prism.languages.html, 'html');
+    const html = formated + lineNumbersWrapper;
+    renderHTML.innerHTML = html;
   });
 
   d.addEventListener('DOMContentLoaded', function () {});
